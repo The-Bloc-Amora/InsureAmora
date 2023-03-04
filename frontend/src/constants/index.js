@@ -75,13 +75,6 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: "Full-Stack Engineer with a keen interest in Finance.",
-    name: "Dannie",
-    title: "Software Engineer",
-    img: people01,
-  },
-  {
-    id: "feedback-2",
     content:
       "Blockchain Developer focused on Smart Contract Auditing and Security.",
     name: "JnrLouis",
@@ -89,7 +82,7 @@ export const feedback = [
     img: people02,
   },
   {
-    id: "feedback-3",
+    id: "feedback-2",
     content:
       "Backend Solidity Developer, Blockchain Researcher and Technical Analyst.",
     name: "Mide Sofek",
@@ -97,10 +90,10 @@ export const feedback = [
     img: people03,
   },
   {
-    id: "feedback-4",
+    id: "feedback-3",
     content:
       "Frontend web3 Developer who designs, build and develops responsive web apps.",
-    name: "Jeffrey Adakole",
+    name: "Jeffrey",
     title: "Software Developer",
     img: people04,
   },
