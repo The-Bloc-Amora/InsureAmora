@@ -11,7 +11,7 @@ const TeamCard = ({ content, name, title, img }) => (
       alt="double_quotes"
       className="w-[42px] h-[27px] object-contain"
     />
-    <p className="font-poppins font-normal text-[20px] text-white md:text-right sm:text-right text-start my-10">
+    <p className="font-poppins font-normal text-[22px] text-white md:text-right sm:text-right text-start my-10">
       {content}
     </p>
     <div className="flex flex-row">
