@@ -1,19 +1,61 @@
 import React, { useState } from "react";
+import { ethers } from "ethers";
+import { useContract, useContractWrite } from "@thirdweb-dev/react";
 
 function Ethform() {
-  const [num1, setNum1] = useState("");
-  const [num2, setNum2] = useState("");
-  const [num3, setNum3] = useState("");
+  const [price, setPrice] = useState("");
+  const [timeDuration, setTimeDuration] = useState("");
+  const [portfolioSize, setPortfolioSize] = useState("");
+  const [value, setPremiumValue] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`Numbers: ${num1}, ${num2}, ${num3}`);
+    console.log(
+      `Numbers: ${price}, ${timeDuration}, ${portfolioSize}, ${value}`
+    );
+    setPrice("");
+    setTimeDuration("");
+    setPortfolioSize("");
   };
 
-  const handleReset = () => {
-    setNum1("");
-    setNum2("");
-    setNum3("");
+  const { contract } = useContract(
+    "0x5cCB86bCfdc47241097F679EacB6C9a0307DF2f3"
+  );
+  const { mutateAsync: createPolicyAgreement, isLoading } = useContractWrite(
+    contract,
+    "createPolicyAgreement"
+  );
+  const { mutateAsync: claimSettlement } = useContractWrite(
+    contract,
+    "claimSettlement"
+  );
+
+  // const handleReset = () => {
+  //   setPrice("");
+  //   setTimeDuration("");
+  //   setPortfolioSize("");
+  // };
+
+  const callCreatePolicy = async () => {
+    try {
+      const data = await createPolicyAgreement([
+        price,
+        timeDuration,
+        portfolioSize,
+      ]);
+      console.info("contract call successs", data);
+    } catch (err) {
+      console.error("contract call failure", err);
+    }
+  };
+
+  const callClaimSettlement = async () => {
+    try {
+      const data = await claimSettlement();
+      console.info("contract call successs", data);
+    } catch (err) {
+      console.error("contract call failure", err);
+    }
   };
 
   return (
@@ -26,9 +68,9 @@ function Ethform() {
           id="num1"
           className="form-input mt-1 block w-full text-3xl font-bold bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md"
           type="number"
-          value={num1}
+          value={price}
           placeholder="add price"
-          onChange={(e) => setNum1(e.target.value)}
+          onChange={(e) => setPrice(e.target.value)}
         />
       </label>
       <br />
@@ -40,9 +82,9 @@ function Ethform() {
           id="num2"
           className="form-input mt-1 block w-full text-3xl font-bold bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md"
           type="number"
-          value={num2}
-          placeholder="Timing"
-          onChange={(e) => setNum2(e.target.value)}
+          value={timeDuration}
+          placeholder="Insurance Duration"
+          onChange={(e) => setTimeDuration(e.target.value)}
         />
       </label>
       <br />
@@ -54,23 +96,42 @@ function Ethform() {
           id="num3"
           className="form-input mt-1 block w-full text-3xl font-bold bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md"
           type="number"
-          value={num3}
-          placeholder="input size"
-          onChange={(e) => setNum3(e.target.value)}
+          value={portfolioSize}
+          placeholder="Portfolio $Eth Value"
+          onChange={(e) => setPortfolioSize(e.target.value)}
         />
       </label>
+      <br />
+
+      {/* PREMIUM VALUE */}
+      <label className="block font-bold mb-2" htmlFor="num3">
+        <h4 className="font-poppins font-semibold text-white text-[18px] leading-[23px] mb-1">
+          Premium Value:
+        </h4>
+        <input
+          id="num4"
+          className="form-input mt-1 block w-full text-3xl font-bold bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md"
+          type="number"
+          value={value}
+          placeholder="Enter Premium"
+          onChange={(e) => setPremiumValue(e.target.value)}
+        />
+      </label>
+      {/* PREMIUM VALUE */}
+
       <br />
       <div className="flex flex-col mt-2">
         <button
           type="submit"
           className={`py-4 px-6
     bg-blue-gradient font-poppins font-medium text-[15px] text-primary outline-none rounded-[10px]`}
+          onClick={callCreatePolicy}
         >
           Create Policy
         </button>
         <button
           type="button"
-          onClick={handleReset}
+          onClick={callClaimSettlement}
           className={`py-4 px-6 mt-3
     bg-blue-gradient font-poppins font-medium text-[15px] text-primary outline-none rounded-[10px]`}
         >

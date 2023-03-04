@@ -8,7 +8,7 @@ import InsuraApp from "./InsuraApp";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ThirdwebProvider activeChain="ethereum">
+  <ThirdwebProvider activeChain="goerli">
     <React.StrictMode>
       <BrowserRouter>
         <Routes>
