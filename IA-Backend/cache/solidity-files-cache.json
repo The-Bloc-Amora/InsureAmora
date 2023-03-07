@@ -365,10 +365,10 @@
         "IERC165"
       ]
     },
-    "C:\\Users\\Louis\\web3\\Hackathons\\Insura v2\\InsureAmora\\IA-Backend\\contracts\\Insure.sol": {
-      "lastModificationDate": 1678059368442,
-      "contentHash": "38d580bc335d14afccb31b40a241d4c5",
-      "sourceName": "contracts/Insure.sol",
+    "C:\\Users\\Louis\\web3\\Hackathons\\Insura v2\\InsureAmora\\IA-Backend\\contracts\\NFTInsureTest.sol": {
+      "lastModificationDate": 1678187744674,
+      "contentHash": "96cba104506b9fb5a508167ff148ad78",
+      "sourceName": "contracts/NFTInsureTest.sol",
       "solcConfig": {
         "version": "0.8.17",
         "settings": {
