@@ -16,6 +16,7 @@ function Ethform() {
     setPrice("");
     setTimeDuration("");
     setPortfolioSize("");
+    setPremiumValue("");
   };
 
   const { contract } = useContract(
@@ -42,6 +43,7 @@ function Ethform() {
         price,
         timeDuration,
         portfolioSize,
+        { value: ethers.utils.parseEther(value) },
       ]);
       console.info("contract call successs", data);
     } catch (err) {
@@ -104,7 +106,7 @@ function Ethform() {
       <br />
 
       {/* PREMIUM VALUE */}
-      <label className="block font-bold mb-2" htmlFor="num3">
+      <label className="block font-bold mb-2" htmlFor="num4">
         <h4 className="font-poppins font-semibold text-white text-[18px] leading-[23px] mb-1">
           Premium Value:
         </h4>
