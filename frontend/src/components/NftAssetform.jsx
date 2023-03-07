@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { utils } from "ethers";
 import { useContract, useContractWrite, useContractRead } from "@thirdweb-dev/react";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function NftAssetform() {
   const [nftContractAddress, setNFTContractaddress] = useState('');
   const [NFTTokenId, setNFTTokenId] = useState('');
@@ -61,11 +64,13 @@ function NftAssetform() {
       console.info("contract call successs", data);
       setIsEligible(true);
       console.log(`Eligible? : ${isEligible}`);
+      toast.success("Great! You are eligible!")
 
     } catch (err) {
       console.error("contract call failure", err);
       setIsEligible(false);
       console.log(`Eligible? : ${isEligible}`);
+      toast.warning("NOT ELIGIBLE")
     }
   };
 
@@ -92,14 +97,17 @@ function NftAssetform() {
         duration,
       ]);
       console.info("contract call successs", data);
+      toast.success("Congrats! NFT Insured.")
 
     } catch (err) {
       console.error("contract call failure", err);
+      toast.warning("NFT NOT INSURED")
     }
   };
 
   return (
     <>
+      <ToastContainer />
       {isEligible ?
         <form className="max-w-[360px] mx-auto" onSubmit={handleInsure}>
           <label className="block font-bold mb-2" htmlFor="nftContractAddress">
