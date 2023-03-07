@@ -15,7 +15,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-import "./IInsurancePolicy.sol";
+import "./IInsurePolicy.sol";
 
 contract EthPriceInsurance is Ownable, ReentrancyGuard {
     /// @notice A Struct to record each holder of this policy

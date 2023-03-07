@@ -83,6 +83,19 @@ contract Insure is helper, Ownable {
         return true;
     }
 
+    function stopInsure(
+        address _contractAddress,
+        uint256 _tokenId
+    ) public {
+        getNFTInsuranceDetails[_contractAddress][_tokenId]
+                .isInsured = false;
+            NFTInsurance[
+                getNFTInsuranceDetails[_contractAddress][_tokenId]
+                    .NFTInsurancyPolicyID
+            ].isInsured = false;
+            getNFTInsuranceDetails[_contractAddress][_tokenId].endDay = 0;
+    }
+
     function getInsuredAmount(
         ValidityPeriod validityPeriod
     ) public returns (uint) {

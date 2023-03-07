@@ -16,7 +16,11 @@ function Ethform() {
     setPrice("");
     setTimeDuration("");
     setPortfolioSize("");
+<<<<<<< HEAD
     setPremiumValue("");// Also clear the value here 
+=======
+    setPremiumValue("");
+>>>>>>> 69a511ac327611d8afb819ee04f90a21e5284312
   };
 
   const { contract } = useContract(
@@ -43,7 +47,11 @@ function Ethform() {
         price,
         timeDuration,
         portfolioSize,
+<<<<<<< HEAD
         value // add the premium state VALUE to this callCreatePolicy function
+=======
+        { value: ethers.utils.parseEther(value) },
+>>>>>>> 69a511ac327611d8afb819ee04f90a21e5284312
       ]);
       console.info("contract call successs", data);
     } catch (err) {
