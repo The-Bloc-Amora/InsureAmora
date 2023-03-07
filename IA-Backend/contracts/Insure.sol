@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./helper.sol";
-import "./IInsurancePolicy.sol";
+import "./IInsurePolicy.sol";
 
 contract Insure is helper, Ownable {
     struct NFTInsuranceDetails {
@@ -26,6 +26,7 @@ contract Insure is helper, Ownable {
         public getNFTInsuranceDetails;
 
     uint256 public numInsurance;
+    uint256 public insureAmount_;
 
     constructor() {
         nftPolicy = IInsurancePolicy(
@@ -94,6 +95,7 @@ contract Insure is helper, Ownable {
         } else {
             insuredAmount = uint256((floorPrice * 3) / 10);
         }
+        insureAmount_ = insuredAmount;
         return insuredAmount;
     }
 
