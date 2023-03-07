@@ -30,8 +30,11 @@ function NftAssetform() {
     console.log(duration);
   }
 
+  // Test Contract: 0xC4A933f725b34F512bEffe464A8644Dc501e5E9a
+  // Main Contract: 0x83E6E9092a301B08B7A2697ABa13B2cABA89D4a9
+
   const { contract } = useContract(
-    "0x83E6E9092a301B08B7A2697ABa13B2cABA89D4a9"
+    "0xC4A933f725b34F512bEffe464A8644Dc501e5E9a"
   );
 
   const { mutateAsync: checkEligibility, } = useContractWrite(
@@ -95,13 +98,14 @@ function NftAssetform() {
         nftContractAddress,
         NFTTokenId,
         duration,
+        {value: premiumAmount},
       ]);
       console.info("contract call successs", data);
       toast.success("Congrats! NFT Insured.")
 
     } catch (err) {
       console.error("contract call failure", err);
-      toast.warning("NFT NOT INSURED")
+      toast.error("NFT NOT INSURED")
     }
   };
 
