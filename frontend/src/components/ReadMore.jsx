@@ -8,16 +8,16 @@ function ReadMore({ text, maxLength }) {
   }
 
   return (
-    <div>
-      <p className="inline-block">
+    <>
+     
         {showAll
           ? text
           : `${text.slice(0, maxLength)}...`}
-      </p>
+      
       <button onClick={() => setShowAll(!showAll)} className="text-gradient">
         {showAll ? 'Read Less' : 'Read More'}
       </button>
-    </div>
+    </>
   );
 }
 
