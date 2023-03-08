@@ -9,6 +9,10 @@ export default defineConfig({
     "process.env": {},
     "global": {},
   },
-
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
+  }
 });
 
