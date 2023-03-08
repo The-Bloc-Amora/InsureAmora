@@ -4,14 +4,14 @@ const TeamCard = ({ content, name, title, img }) => (
   <div
     id="team"
     className="flex justify-between flex-col px-10 py-12
-   rounded-[20px] max-w-[280px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card"
+   rounded-[20px] max-w-[350px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card"
   >
     <img
       src={quotes}
       alt="double_quotes"
       className="w-[42px] h-[27px] object-contain"
     />
-    <p className="font-poppins font-normal text-[22px] text-white md:text-right sm:text-right text-start my-10">
+    <p className="font-poppins font-normal text-[22px] text-white text-center my-10">
       {content}
     </p>
     <div className="flex flex-row">

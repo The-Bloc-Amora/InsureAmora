@@ -9,8 +9,14 @@ const NavbarApp = () => {
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       {/* <img src={logo} alt="hookbank" className="w-[124px] h-[32px]" /> */}
-      <h1 className="text-gradient text-2xl font-bold">INSUREAMORA APP</h1>
+      <h1 className="text-gradient text-2xl font-bold">THEBA INSURA APP</h1>
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+        <Link
+          to="/"
+          className="mr-10 font-poppins font-normal cursor-pointer text-[16px] text-white"
+        >
+          Home
+        </Link>
         {navLinks2.map((nav, index) => (
           <li
             key={nav.id}
