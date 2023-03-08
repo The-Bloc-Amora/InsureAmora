@@ -140,7 +140,7 @@ contract EthPriceInsurance is Ownable, ReentrancyGuard {
         ////////////////////////////
 
         //Update premiumPaid
-        policyHolders[msg.sender].premiumPaid += premium;
+        policyHolders[msg.sender].premiumPaid += msg.value;
 
         //record user has insured
         insured[msg.sender] = true;
@@ -171,7 +171,16 @@ contract EthPriceInsurance is Ownable, ReentrancyGuard {
         ///////////////////
         // BurnNFT
         // nftPolicy.burn();
+
         ///////////////////
+        //RETURN DATA TO DEFAULT STATE//
+        ///////////////////
+        insured[msg.sender] = false;
+        policyHolders[msg.sender].hasPolicy = false;
+        policyHolders[msg.sender].insuredPrice = 0;
+        policyHolders[msg.sender].timeDuration = 0;
+        policyHolders[msg.sender].portfolioValue = 0;
+        policyHolders[msg.sender].premiumPaid = 0;
         noOfHolders--;
     }
 
